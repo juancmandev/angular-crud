@@ -2,9 +2,9 @@
 
 A simple CRUD developed with with 🅰️ [Angular](https://angular.io/), using [Angular Material](https://material.angular.io/) and [HttpClient](https://angular.io/guide/http).
 
-[Angular CRUD image example 1](https://i.imgur.com/StMWLqC.png)
-[Angular CRUD image example 2](https://i.imgur.com/TDFQKe1.png)
-[Angular CRUD image example 3](https://i.imgur.com/MpAIhZQ.png)
+![Angular CRUD image example 1](https://i.imgur.com/StMWLqC.png)
+![Angular CRUD image example 2](https://i.imgur.com/TDFQKe1.png)
+![Angular CRUD image example 3](https://i.imgur.com/MpAIhZQ.png)
 
 ## Development server
 

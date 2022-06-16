@@ -110,6 +110,15 @@
       "status": true,
       "logicalStatus": 1,
       "id": 12
+    },
+    {
+      "completeName": "Fernando Cuellar",
+      "dateOfBirth": "2022-06-03T05:00:00.000Z",
+      "age": 22,
+      "idPosition": 2,
+      "status": true,
+      "logicalStatus": 1,
+      "id": 13
     }
   ],
   "positions": [

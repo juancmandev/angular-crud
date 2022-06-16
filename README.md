@@ -1,6 +1,8 @@
-# AngularCrud
+# Angular CRUD
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.3.
+A simple CRUD developed with with 🅰️ [Angular](https://angular.io/), using [Angular Material](https://material.angular.io/) and [HttpClient](https://angular.io/guide/http).
+
+[Angular CRUD image example](https://imgur.com/StMWLqC)
 
 ## Development server
 
@@ -8,4 +10,4 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 
 ## JSON-Server
 
-Run `json-serve --watch db.json` to run a local data base to simulate an Api.
+Run `json-server --watch db.json` to run a local data base to simulate an Api.

@@ -1,0 +1,8 @@
+.buttons-container {
+    width: 100px;
+    margin: 0 auto;
+    padding-top: 32px;
+    display: grid;
+    justify-items: center;
+    row-gap: 20px;
+}

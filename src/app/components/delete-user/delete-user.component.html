@@ -1,0 +1,16 @@
+<header>
+    <h1 class="center-text" mat-dialog-title>
+        ¿Desea eliminar este usuario?
+    </h1>
+    <h2 class="center-text">
+        Esta acción no se puede revertir...
+    </h2>
+</header>
+<main class="buttons-container" mat-dialog-section>
+    <button (click)="closeDialog()" class="accept-button" mat-raised-button color="accent">
+        No
+    </button>
+    <button (click)="deleteUser()" class="cancel-button" mat-raised-button color="warn">
+        Sí
+    </button>
+</main>

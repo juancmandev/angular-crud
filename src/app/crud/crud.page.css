@@ -2,6 +2,10 @@ table {
     width: 100%;
 }
 
+mat-form-field {
+    width: 100%;
+}
+
 .actions-cell {
     height: 48px;
     display: flex;
@@ -13,4 +17,17 @@ table {
     margin-bottom: 120px;
     display: flex;
     justify-content: space-between;
+}
+
+.search-section {
+    margin: 32px 20px;
+    padding: 20px 16px;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    align-items: center;
+    background-color: #424242;
+}
+
+.table-section {
+    padding: 0 20px;
 }

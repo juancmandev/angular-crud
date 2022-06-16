@@ -1,0 +1,10 @@
+mat-form-field {
+    width: 100%;
+}
+
+.dialog-footer {
+    margin-top: 40px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 16px;
+}

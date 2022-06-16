@@ -19,4 +19,12 @@ export class ApiService {
     getPositions() {
         return this.http.get<any>('http://localhost:3000/positions/');
     }
+
+    editUser(data: any, id: number) {
+        return this.http.put<any>('http://localhost:3000/users/'+id, data);
+    }
+
+    logicalDeleteUser(data: any, id: number) {
+        return this.http.put<any>('http://localhost:3000/users/'+id, data);
+    }
 }

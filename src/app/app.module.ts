@@ -5,7 +5,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { DialogUserModule } from './dialog-user/dialog-user.module';
+import { AddUserModule } from './components/add-user/add-user.module';
+import { EditUserModule } from './components/edit-user/edit-user.module';
+import { ChangeStatusModule } from './components/change-status/change-status.module';
+import { DeleteUserModule } from './components/delete-user/delete-user.module';
 
 @NgModule({
   declarations: [
@@ -16,7 +19,10 @@ import { DialogUserModule } from './dialog-user/dialog-user.module';
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    DialogUserModule
+    AddUserModule,
+    EditUserModule,
+    ChangeStatusModule,
+    DeleteUserModule
   ],
   providers: [],
   bootstrap: [AppComponent]

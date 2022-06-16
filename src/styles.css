@@ -1,10 +1,41 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background-color: #7F8487;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
 
 .mat-button-wrapper {
-    display: flex;
-    gap: 4px;
-    align-items: center;
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+}
+
+.center-text {
+  text-align: center;
+}
+
+.accept-button {
+  width: 80px !important;
+  min-width: unset!important;
+}
+
+.cancel-button {
+  width: 60px !important;
+  min-width: unset!important;
+}
+
+.search-section .mat-form-field-appearance-outline .mat-form-field-wrapper {
+  margin: 0 !important;
+}
+
+.search-section .mat-form-field-wrapper {
+  padding: 0 !important;
 }

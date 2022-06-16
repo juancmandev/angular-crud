@@ -2,7 +2,10 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
-import { DialogUserComponent } from '../dialog-user/dialog-user.component';
+import { AddUserComponent } from '../components/add-user/add-user.component';
+import { EditUserComponent } from '../components/edit-user/edit-user.component';
+import { ChangeStatusComponent } from '../components/change-status/change-status.component';
+import { DeleteUserComponent } from '../components/delete-user/delete-user.component';
 import { ApiService } from '../services/api.service';
 
 @Component({
@@ -29,8 +32,35 @@ export class CrudPage implements OnInit {
     }
 
     addUser() {
-        this.dialog.open(DialogUserComponent, {
+        this.dialog.open(AddUserComponent, {
             width: '40%'
+        }).afterClosed().subscribe((val: string) => {
+            val === 'save' ? this.getUsers() : '';
+        });
+    }
+
+    editUser(row: User) {
+        this.dialog.open(EditUserComponent, {
+            width: '40%',
+            data: row
+        }).afterClosed().subscribe((val: string) => {
+            val === 'save' ? this.getUsers() : '';
+        });
+    }
+
+    deleteUser(row: User) {
+        this.dialog.open(DeleteUserComponent, {
+            width: '40%',
+            data: row
+        }).afterClosed().subscribe((val: string) => {
+            val === 'save' ? this.getUsers() : '';
+        });
+    }
+
+    changeStatus(row: any) {
+        this.dialog.open(ChangeStatusComponent, {
+            width: '40%',
+            data: row
         }).afterClosed().subscribe((val: string) => {
             val === 'save' ? this.getUsers() : '';
         });
@@ -40,7 +70,8 @@ export class CrudPage implements OnInit {
         this.api.getUsers()
             .subscribe({
                 next: (res: Array<any>) => {
-                    this.dataSource = new MatTableDataSource<User>(res);
+                    const nonDeletedUsers = res.filter(user => user.logicalStatus === 1);
+                    this.dataSource = new MatTableDataSource<User>(nonDeletedUsers);
                     this.dataSource.paginator = this.paginator;
                 },
                 error: (error) => {
@@ -51,14 +82,14 @@ export class CrudPage implements OnInit {
 
     getPositions() {
         this.api.getPositions()
-        .subscribe({
-            next: (res) => {
-                this.positions = res;
-            },
-            error: (error) => {
-                console.error(error);
-            }
-        });
+            .subscribe({
+                next: (res) => {
+                    this.positions = res;
+                },
+                error: (error) => {
+                    console.error(error);
+                }
+            });
     }
 
     convertIdToPosition(positionId: number) {

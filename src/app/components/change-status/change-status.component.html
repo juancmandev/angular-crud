@@ -1,0 +1,13 @@
+<header>
+    <h1 class="center-text" mat-dialog-title>
+        ¿Desea cambiar el estatus de este usuario?
+    </h1>
+</header>
+<main class="buttons-container" mat-dialog-section>
+    <button (click)="changeUserStatus()" class="accept-button" mat-raised-button color="primary">
+        Sí
+    </button>
+    <button (click)="closeDialog()" class="cancel-button" mat-raised-button color="accent">
+        No
+    </button>
+</main>

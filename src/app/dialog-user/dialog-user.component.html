@@ -1,0 +1,54 @@
+<h1 mat-dialog-title>
+    Añadir usuario
+</h1>
+<main mat-dialog-section>
+    <form [formGroup]="userForm">
+        <mat-form-field appearance="outline">
+            <mat-label>
+                Nombre completo
+            </mat-label>
+            <input formControlName="completeName" matInput />
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>
+                Fecha de nacimiento
+            </mat-label>
+            <input formControlName="dateOfBirth" matInput [matDatepicker]="picker" />
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>
+                Edad
+            </mat-label>
+            <input formControlName="age" matInput type="number" />
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>
+                Seleccione un cargo
+            </mat-label>
+            <mat-select formControlName="idPosition" placeholder="Cargo">
+                <mat-option *ngFor="let position of positions" [value]="position.id">
+                    {{ position.description }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>
+                Seleccione un estatus
+            </mat-label>
+            <mat-select formControlName="status" placeholder="Estatus">
+                <mat-option [value]="true">Activo</mat-option>
+                <mat-option [value]="false">Inactivo</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <div mat-dialog-action class="dialog-footer">
+            <button (click)="closeDialog()" mat-raised-button color="accent">
+                <mat-icon>cancel</mat-icon>Cancelar
+            </button>
+            <button (click)="submitForm()" mat-raised-button color="primary">
+                <mat-icon>save</mat-icon>Guardar
+            </button>
+        </div>
+    </form>
+</main>

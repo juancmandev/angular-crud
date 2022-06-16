@@ -1,0 +1,16 @@
+table {
+    width: 100%;
+}
+
+.actions-cell {
+    height: 48px;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.toolbar {
+    margin-bottom: 120px;
+    display: flex;
+    justify-content: space-between;
+}

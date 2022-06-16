@@ -1,0 +1,58 @@
+{
+  "users": [
+    {
+      "completeName": "Juan Carlos Manzanero Domínguez",
+      "dateOfBirth": "2000-06-08T05:00:00.000Z",
+      "age": 22,
+      "idPosition": 1,
+      "status": true,
+      "id": 1
+    },
+    {
+      "completeName": "Galletita Monita",
+      "dateOfBirth": "1996-09-07T05:00:00.000Z",
+      "age": 26,
+      "idPosition": 4,
+      "status": true,
+      "id": 2
+    },
+    {
+      "completeName": "Juanito",
+      "dateOfBirth": "2022-06-16T05:00:00.000Z",
+      "age": 12,
+      "idPosition": 2,
+      "status": true,
+      "id": 3
+    },
+    {
+      "completeName": "Tronita",
+      "dateOfBirth": "2022-06-08T05:00:00.000Z",
+      "age": 20,
+      "idPosition": 2,
+      "status": true,
+      "id": 4
+    }
+  ],
+  "positions": [
+    {
+      "id": 1,
+      "description": "Frontend Developer"
+    },
+    {
+      "id": 2,
+      "description": "Backend Developer"
+    },
+    {
+      "id": 3,
+      "description": "DevOps"
+    },
+    {
+      "id": 4,
+      "description": "Software Engineer"
+    },
+    {
+      "id": 5,
+      "description": "Data Scientist"
+    }
+  ]
+}

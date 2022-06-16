@@ -1,5 +1,6 @@
 import { Component, Inject } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { ConfirmActionComponent } from '../confirm-action/confirm-action.component';
 import { ApiService } from '../../services/api.service';
 
 @Component({
@@ -12,6 +13,7 @@ export class DeleteUserComponent {
     constructor(
         @Inject(MAT_DIALOG_DATA) public userData: any,
         private dialogRef: MatDialogRef<DeleteUserComponent>,
+        private dialog: MatDialog,
         private api: ApiService
     ) { }
 
@@ -19,15 +21,19 @@ export class DeleteUserComponent {
         this.userData.logicalStatus = 0;
 
         this.api.logicalDeleteUser(this.userData, this.userData.id)
-        .subscribe({
-            next: (res) => {
-                alert('Usuario eliminado con éxito');
-                this.dialogRef.close('save');
-            },
-            error: () => {
-                alert('Ha ocurrido un error inesperado...');
-            }
-        });
+            .subscribe({
+                next: (res) => {
+                    this.dialog.open(ConfirmActionComponent, {
+                        width: '40%',
+                        data: 'Usuario eliminado con éxito'
+                    }).afterClosed().subscribe(() => {
+                        this.dialogRef.close('save');
+                    });
+                },
+                error: () => {
+                    alert('Ha ocurrido un error inesperado...');
+                }
+            });
     }
 
     closeDialog() {

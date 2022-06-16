@@ -9,6 +9,7 @@ import { AddUserModule } from './components/add-user/add-user.module';
 import { EditUserModule } from './components/edit-user/edit-user.module';
 import { ChangeStatusModule } from './components/change-status/change-status.module';
 import { DeleteUserModule } from './components/delete-user/delete-user.module';
+import { ConfirmActionModule } from './components/confirm-action/confirm-action.module';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { DeleteUserModule } from './components/delete-user/delete-user.module';
     AddUserModule,
     EditUserModule,
     ChangeStatusModule,
-    DeleteUserModule
+    DeleteUserModule,
+    ConfirmActionModule
   ],
   providers: [],
   bootstrap: [AppComponent]

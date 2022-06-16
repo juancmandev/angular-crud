@@ -1,7 +1,8 @@
 import { Component, Inject } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ApiService } from '../../services/api.service';
+import { ConfirmActionComponent } from '../confirm-action/confirm-action.component';
 
 @Component({
     selector: 'edit-user',
@@ -9,12 +10,13 @@ import { ApiService } from '../../services/api.service';
     styleUrls: ['./edit-user.component.css']
 })
 export class EditUserComponent {
-    public editUserForm!: FormGroup;
+    editUserForm!: FormGroup;
     public positions = [{ id: 0, description: '' }];
 
     constructor(
         @Inject(MAT_DIALOG_DATA) public editUserData: any,
         private dialogRef: MatDialogRef<EditUserComponent>,
+        private dialog: MatDialog,
         private formBuilder: FormBuilder,
         private api: ApiService
     ) { }
@@ -46,18 +48,28 @@ export class EditUserComponent {
         this.api.editUser(this.editUserForm.value, this.editUserData.id)
             .subscribe({
                 next: (res) => {
-                    alert('Usuario editado con éxito');
-                    this.editUserForm.reset();
-                    this.dialogRef.close('save');
+                    this.dialog.open(ConfirmActionComponent, {
+                        width: '40%',
+                        data: 'Usuario editado con éxito'
+                    }).afterClosed().subscribe(() => {
+                        this.dialogRef.close('save');
+                        this.editUserForm.reset();
+                    });
                 },
                 error: () => {
-                    alert('Ha ocurrido un error inesperado...');
+                    this.dialog.open(ConfirmActionComponent, {
+                        width: '40%',
+                        data: 'Ha ocrrido un error al intentar editar el usuario...'
+                    });
                 }
             });
     }
 
     invalidForm() {
-        alert('Por favor, llene los campos marcados con un asterisco (*)');
+        this.dialog.open(ConfirmActionComponent, {
+            width: '40%',
+            data: 'Por favor, llene los campos marcados con un asterisco "*"'
+        });
     }
 
     getPositions() {

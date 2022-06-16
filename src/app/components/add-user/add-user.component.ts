@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { ConfirmActionComponent } from '../confirm-action/confirm-action.component';
 import { ApiService } from '../../services/api.service';
 
 @Component({
@@ -9,11 +10,12 @@ import { ApiService } from '../../services/api.service';
     styleUrls: ['./add-user.component.css']
 })
 export class AddUserComponent implements OnInit {
-    public addUserForm!: FormGroup;
+    addUserForm!: FormGroup;
     public positions = [{ id: 0, description: '' }];
 
     constructor(
         private dialogRef: MatDialogRef<AddUserComponent>,
+        private dialog: MatDialog,
         private formBuilder: FormBuilder,
         private api: ApiService
     ) { }
@@ -41,18 +43,28 @@ export class AddUserComponent implements OnInit {
         this.api.createUser(this.addUserForm.value)
             .subscribe({
                 next: (res) => {
-                    alert('Usuario añadido con éxito');
-                    this.addUserForm.reset();
-                    this.dialogRef.close('save');
+                    this.dialog.open(ConfirmActionComponent, {
+                        width: '40%',
+                        data: 'Usuario añadido con éxito'
+                    }).afterClosed().subscribe(() => {
+                        this.addUserForm.reset();
+                        this.dialogRef.close('save');
+                    });
                 },
                 error: () => {
-                    alert('Ha ocurrido un error inesperado...');
+                    this.dialog.open(ConfirmActionComponent, {
+                        width: '40%',
+                        data: 'Ha ocurrido un error al intentar añadir el usuario...'
+                    });
                 }
             });
     }
 
     invalidForm() {
-        alert('Por favor, llene los campos marcados con un asterisco (*)');
+        this.dialog.open(ConfirmActionComponent, {
+            width: '40%',
+            data: 'Por favor, llene los campos marcados con un asterisco "*"'
+        });
     }
 
     getPositions() {

@@ -39,3 +39,7 @@ body {
 .search-section .mat-form-field-wrapper {
   padding: 0 !important;
 }
+
+.search-field .mat-input-element {
+  color: white;
+}

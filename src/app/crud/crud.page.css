@@ -22,10 +22,14 @@ mat-form-field {
 .search-section {
     margin: 32px 20px;
     padding: 20px 16px;
-    display: grid;
-    grid-template-columns: 2fr 1fr;
     align-items: center;
     background-color: #424242;
+}
+
+.search-form {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: 2fr 1fr 4fr;
 }
 
 .table-section {

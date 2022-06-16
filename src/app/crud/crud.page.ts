@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
@@ -14,8 +15,18 @@ import { ApiService } from '../services/api.service';
     templateUrl: './crud.page.html',
 })
 export class CrudPage implements OnInit {
+    searchForm!: FormGroup;
     displayedColumns: string[] = ['id', 'name', 'age', 'position', 'status', 'actions'];
     dataSource: any;
+
+    filterBy: string = 'completeName';
+    filtersBy = [
+        { name: 'Id', value: 'id', options: [] },
+        { name: 'Nombre', value: 'completeName', options: [] },
+        { name: 'Cargo', value: 'position', options: [] },
+    ];
+
+    tableCopy: any = [];
 
     private positions = [{ id: 0, description: '' }];
 
@@ -23,12 +34,21 @@ export class CrudPage implements OnInit {
 
     constructor(
         private dialog: MatDialog,
-        private api: ApiService
+        private api: ApiService,
+        private formBuilder: FormBuilder
     ) { }
 
     ngOnInit(): void {
-        this.getUsers();
+        this.searchForm = this.formBuilder.group({
+            searchValue: [''],
+            filterBy: ['']
+        });
+
+        this.searchForm.controls['filterBy'].setValue('completeName')
+
         this.getPositions();
+        this.getUsers();
+
     }
 
     addUser() {
@@ -71,7 +91,13 @@ export class CrudPage implements OnInit {
             .subscribe({
                 next: (res: Array<any>) => {
                     const nonDeletedUsers = res.filter(user => user.logicalStatus === 1);
+
+                    nonDeletedUsers.forEach((data: User) => {
+                        data.position = this.convertIdToPosition(data.idPosition);
+                    });
+
                     this.dataSource = new MatTableDataSource<User>(nonDeletedUsers);
+                    this.tableCopy = this.dataSource;
                     this.dataSource.paginator = this.paginator;
                 },
                 error: (error) => {
@@ -92,6 +118,29 @@ export class CrudPage implements OnInit {
             });
     }
 
+    changeFilter(filter: string) {
+        this.filterBy = filter;
+    }
+
+    searchData(event: Event) {
+        const searchValue = (event.target as HTMLInputElement).value.trim().toLowerCase();
+
+        if (searchValue !== '') {
+            const filteredData: Array<any> = [];
+            this.tableCopy.data.forEach((data: any) => {
+                if (this.filterBy === 'id') {
+                    data[this.filterBy].toString().includes(searchValue) ? filteredData.push(data) : null;
+                } else {
+                    data[this.filterBy].trim().toLowerCase().includes(searchValue) ? filteredData.push(data) : null;
+                }
+            });
+
+            this.dataSource = filteredData;
+        } else {
+            this.dataSource = this.tableCopy;
+        }
+    }
+
     convertIdToPosition(positionId: number) {
         const position = this.positions.filter(position => position.id === positionId);
 
@@ -104,6 +153,7 @@ export interface User {
     completeName: string;
     age: number;
     idPosition: number;
+    position: string;
     status: boolean;
 };
 

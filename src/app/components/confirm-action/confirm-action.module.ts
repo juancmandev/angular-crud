@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ChangeStatusComponent } from './change-status.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { ConfirmActionComponent } from './confirm-action.component';
 
 @NgModule({
     imports: [
@@ -12,7 +12,7 @@ import { MatIconModule } from '@angular/material/icon';
         MatButtonModule,
         MatIconModule
     ],
-    declarations: [ChangeStatusComponent],
-    exports: [ChangeStatusComponent]
+    declarations: [ConfirmActionComponent],
+    exports: [ConfirmActionComponent]
 })
-export class ChangeStatusModule { }
+export class ConfirmActionModule { }

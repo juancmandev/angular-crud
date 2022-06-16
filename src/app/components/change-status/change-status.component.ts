@@ -1,5 +1,6 @@
 import { Component, Inject } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { ConfirmActionComponent } from '../confirm-action/confirm-action.component';
 import { ApiService } from '../../services/api.service';
 
 @Component({
@@ -12,6 +13,7 @@ export class ChangeStatusComponent {
     constructor(
         @Inject(MAT_DIALOG_DATA) public userData: any,
         private dialogRef: MatDialogRef<ChangeStatusComponent>,
+        private dialog: MatDialog,
         private api: ApiService
     ) { }
 
@@ -19,15 +21,22 @@ export class ChangeStatusComponent {
         this.userData.status = !this.userData.status;
 
         this.api.editUser(this.userData, this.userData.id)
-        .subscribe({
-            next: (res) => {
-                alert('Estatus de usuario editado con éxito');
-                this.dialogRef.close('save');
-            },
-            error: () => {
-                alert('Ha ocurrido un error inesperado...');
-            }
-        });
+            .subscribe({
+                next: (res) => {
+                    this.dialog.open(ConfirmActionComponent, {
+                        width: '40%',
+                        data: 'Estatus cambiado con éxito'
+                    }).afterClosed().subscribe(() => {
+                        this.dialogRef.close('save');
+                    });
+                },
+                error: () => {
+                    this.dialog.open(ConfirmActionComponent, {
+                        width: '40%',
+                        data: 'Ha ocurrido un error al intentar cambiar el estatus del usuario'
+                    });
+                }
+            });
     }
 
     closeDialog() {

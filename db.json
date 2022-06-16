@@ -1,22 +1,115 @@
 {
   "users": [
     {
-      "completeName": "123",
-      "dateOfBirth": "2022-06-01T05:00:00.000Z",
-      "age": 123,
+      "completeName": "Juan Carlos Manzanero Domínguez",
+      "dateOfBirth": "2000-01-08T06:00:00.000Z",
+      "age": 22,
       "idPosition": 1,
-      "status": true,
-      "logicalStatus": 0,
-      "id": 1
+      "status": false,
+      "logicalStatus": 1,
+      "id": 1,
+      "position": "Frontend Developer"
     },
     {
-      "completeName": "Juan Carlos Manzanero",
-      "dateOfBirth": "2000-01-08T06:00:00.000Z",
+      "completeName": "María Hernández",
+      "dateOfBirth": "1995-02-02T06:00:00.000Z",
+      "age": 30,
+      "idPosition": 2,
+      "status": true,
+      "logicalStatus": 1,
+      "id": 2
+    },
+    {
+      "completeName": "Pedro Hernández",
+      "dateOfBirth": "1990-12-01T06:00:00.000Z",
+      "age": 40,
+      "idPosition": 3,
+      "status": true,
+      "logicalStatus": 1,
+      "id": 3,
+      "position": "DevOps"
+    },
+    {
+      "completeName": "Mónica Hernández",
+      "dateOfBirth": "1996-10-07T06:00:00.000Z",
+      "age": 26,
+      "idPosition": 2,
+      "status": true,
+      "logicalStatus": 1,
+      "id": 4
+    },
+    {
+      "completeName": "Ana Gónzalez",
+      "dateOfBirth": "1999-05-25T06:00:00.000Z",
+      "age": 23,
+      "idPosition": 5,
+      "status": true,
+      "logicalStatus": 1,
+      "id": 5
+    },
+    {
+      "completeName": "Noé Bautista",
+      "dateOfBirth": "2000-05-12T06:00:00.000Z",
       "age": 22,
       "idPosition": 1,
       "status": true,
       "logicalStatus": 1,
-      "id": 2
+      "id": 6
+    },
+    {
+      "completeName": "Miguel Domínguez",
+      "dateOfBirth": "1996-02-01T06:00:00.000Z",
+      "age": 25,
+      "idPosition": 4,
+      "status": true,
+      "logicalStatus": 1,
+      "id": 7
+    },
+    {
+      "completeName": "Santiago Velázquez",
+      "dateOfBirth": "1997-03-21T06:00:00.000Z",
+      "age": 18,
+      "idPosition": 5,
+      "status": true,
+      "logicalStatus": 1,
+      "id": 8
+    },
+    {
+      "completeName": "Óscar Barajas",
+      "dateOfBirth": "1988-01-08T06:00:00.000Z",
+      "age": 35,
+      "idPosition": 1,
+      "status": true,
+      "logicalStatus": 1,
+      "id": 9
+    },
+    {
+      "completeName": "Stefanny Aguilar",
+      "dateOfBirth": "1994-04-12T06:00:00.000Z",
+      "age": 22,
+      "idPosition": 1,
+      "status": true,
+      "logicalStatus": 1,
+      "id": 10
+    },
+    {
+      "completeName": "Cristian Vela",
+      "dateOfBirth": "1985-01-08T06:00:00.000Z",
+      "age": 32,
+      "idPosition": 2,
+      "status": true,
+      "logicalStatus": 1,
+      "id": 11,
+      "position": "Backend Developer"
+    },
+    {
+      "completeName": "Nelly Aragón",
+      "dateOfBirth": "2022-06-02T05:00:00.000Z",
+      "age": 22,
+      "idPosition": 1,
+      "status": true,
+      "logicalStatus": 1,
+      "id": 12
     }
   ],
   "positions": [

@@ -12,4 +12,4 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 
 ## JSON-Server
 
-This project uses a JSON server to simulate an Api. Run `npm install -g json-server` to install it globaly, then run `json-server --watch db.json` to run the server.
+This project uses a JSON server to simulate an Api. Run `npm install -g json-server` to install it globally, then run `json-server --watch db.json` to run the server.
